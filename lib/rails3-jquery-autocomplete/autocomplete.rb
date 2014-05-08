@@ -68,6 +68,7 @@ module Rails3JQueryAutocomplete
             class_name = options[:class_name] || object
             items = get_autocomplete_items(:model => get_object(class_name), \
               :options => options, :term => term, :method => method)
+            items = items.drop_while{|item| item == options[:except]}
           else
             items = {}
           end
